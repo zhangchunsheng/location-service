@@ -5,24 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>Bootstrap 101 Template</title>
+    <title>基于地理位置的搜索服务</title>
 
+    <style type="text/css">
+        body, html,#allmap {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+        }
+    </style>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <script src="./js/html5shiv.min.js"></script>
+    <script src="./js/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lQdsfRa5RghKht0IbnYQ4Mom"></script>
 </head>
 <body>
 <h1>基于地理位置的搜索服务</h1>
 
+<div id="search">
+    城市：
+    <select id="city">
+        <option value="上海">上海</option>
+    </select>
+    地点类型：
+    <select id="place_type">
+        <option value="1">银行</option>
+    </select>
+    地点：<input id="address" type="text" value="闵行区吴中路1200号"/>
+    <input id="find" type="button" value="查找" />
+    <input id="findAll" type="button" value="查看所有" />
+</div>
+
+<div id="result" style="width: 100%;height: 100px">
+
+</div>
+
+<div id="allmap"></div>
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="./js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

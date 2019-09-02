@@ -79,6 +79,13 @@ LocationService.getBankPOI = function(address, callback, city) {
     myGeo.getPoint(address, callback, city);
 };
 
+LocationService.searchAddress = function(address, callback, city) {
+    // 创建地址解析器实例
+    var myGeo = new BMap.Geocoder();
+    // 将地址解析结果显示在地图上,并调整地图视野
+    myGeo.getPoint(address, callback, city);
+};
+
 LocationService.initBanks = function(callback) {
     for(var i = 0 ; i < banks.length ; i++) {
         (function(index) {
@@ -216,9 +223,15 @@ $(document).ready(function() {
         LocationService.getBankPOI(address, function(location, detail) {
             if(typeof location == "undefined") {
                 alert("没有该地址信息");
+                return;
+            }
+            if(location == null) {
+                alert("没有该地址信息");
+                return;
             }
             if(!location.hasOwnProperty("lng")) {
                 alert("没有该地址信息");
+                return;
             }
 
             console.log(location);
@@ -249,7 +262,7 @@ $(document).ready(function() {
                     LocationService.reloadMap(location);
                 });
             });
-        });
+        }, city);
     });
 
     $("#findAll").click(function() {
